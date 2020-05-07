@@ -97,6 +97,23 @@ void puntos() {
     }
     break;
   case 3:
+    y = 100;
+    for (int n=0; n<10; n++) {
+      fill(0);
+      textSize(10);
+      text(prueba2020[n][0],10,y +(2*Float.parseFloat(prueba2020[n][1])));
+      for (int i = 1; i < prueba2020[n].length; i++) {
+        strokeWeight(0);
+        fill(colores[n][0], colores[n][1], colores[n][2], 255);
+        circle((100*i), y +(2*Float.parseFloat(prueba2020[n][i])), 10);
+        if ((i+1) < 13) {
+          strokeWeight(2);
+          fill(0);
+          line((100*i), y +(2*Float.parseFloat(prueba2020[n][i])), 100*(i+1), y +(2*Float.parseFloat(prueba2020[n][i + 1])));
+        }
+      }
+      y += 50;
+    }
     break;
   }
 
@@ -138,6 +155,13 @@ void datos() {
     pedidosPrueba[i][11] = tab2.getString("Noviembre");
     pedidosPrueba[i][12] = tab2.getString("Diciembre");
     i++;
+  }
+  ////////////////////////////////////////demanda current ///////////////////////////////////////////////////////////////////
+  for (int x = 0; x < prueba2020.length;x++) {
+    prueba2020[x][0] = pedidosPrueba[x][0];
+    for (int y = 1; y < prueba2020[x].length;y++) {
+        prueba2020[x][y] = ""+Float.parseFloat(pedidosPrueba[x][y] + historicoPrueba[x][y]);
+    }
   }
 }
 
