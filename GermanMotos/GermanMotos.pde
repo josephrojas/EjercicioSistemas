@@ -8,13 +8,13 @@ String [][] prueba2020;
 Table table, demanda, final2020;
 void setup ()
 {
-  menu();
   table = loadTable("historico.csv", "header");
   demanda = loadTable("Ventas.csv", "header");
   final2020 = new Table();
   historicoPrueba = new String[table.getRowCount()][table.getColumnCount()];
   pedidosPrueba = new String[demanda.getRowCount()][demanda.getColumnCount()];
   prueba2020 = new String[table.getRowCount()][demanda.getColumnCount()];
+  menu();
   for (int x = 0; x < colores.length; x++) {
     colores[x][0] = (int)(random(150, 255));
     colores[x][1] = (int)(random(100, 200)); 
@@ -199,6 +199,38 @@ void menu() {
     }
 }
 
+void guardarTabla () {
+  final2020.addColumn("ID");
+  final2020.addColumn("Enero");
+  final2020.addColumn("Febrero");
+  final2020.addColumn("Marzo");
+  final2020.addColumn("Abril");
+  final2020.addColumn("Mayo");
+  final2020.addColumn("Junio");
+  final2020.addColumn("Julio");
+  final2020.addColumn("Agosto");
+  final2020.addColumn("Septiembre");
+  final2020.addColumn("Octubre");
+  final2020.addColumn("Noviembre");
+  final2020.addColumn("Diciembre");
+  for (int i = 0; i <prueba2020.length;i++) {
+    TableRow newRow = final2020.addRow();
+    newRow.setString("ID",prueba2020[i][0]);
+    newRow.setString("Enero",prueba2020[i][1]);
+    newRow.setString("Febrero",prueba2020[i][2]);
+    newRow.setString("Marzo",prueba2020[i][3]);
+    newRow.setString("Abril",prueba2020[i][4]);
+    newRow.setString("Mayo",prueba2020[i][5]);
+    newRow.setString("Junio",prueba2020[i][6]);
+    newRow.setString("Julio",prueba2020[i][7]);
+    newRow.setString("Agosto",prueba2020[i][8]);
+    newRow.setString("Septiembre",prueba2020[i][9]);
+    newRow.setString("Octubre",prueba2020[i][10]);
+    newRow.setString("Noviembre",prueba2020[i][11]);
+    newRow.setString("Diciembre",prueba2020[i][12]);
+  }
+  saveTable(final2020,"data/Demanda2020.csv");
+}
 void keyPressed() {
   if (mouseX >= 1000 && mouseX <= width && mouseY >= 0 && mouseY < 100) {
     setup();
