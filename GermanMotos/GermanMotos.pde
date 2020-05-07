@@ -10,24 +10,10 @@ void setup ()
 {
   menu();
   table = loadTable("historico.csv", "header");
-  demanda = loadTable("Ventas.csv","header");
+  demanda = loadTable("Ventas.csv", "header");
   historicoPrueba = new String[table.getRowCount()][table.getColumnCount()];
   pedidosPrueba = new String[demanda.getRowCount()][demanda.getColumnCount()];
-  switch (menu) {
-  case 1:
-  
-    break;
-  case 2: 
-    break;
-  case 3:
-    break;
-  case 4:
-    break;
-  case 0:
-    break;
-  default:
-    break;
-  }
+  prueba2020 = new String[table.getRowCount()][demanda.getColumnCount()];
   for (int x = 0; x < colores.length; x++) {
     colores[x][0] = (int)(random(150, 255));
     colores[x][1] = (int)(random(100, 200)); 
@@ -41,8 +27,8 @@ void draw()
 {
   background(255);
   grafica();
-  puntos();
   guia();
+  puntos();
 }
 
 void grafica() {
@@ -58,20 +44,44 @@ void grafica() {
 
 void puntos() {
   int y = 200;
-
-  for (int n=0; n<10; n++) {
-
-    for (int i = 1; i < historicoPrueba[n].length; i++) {
-      strokeWeight(0);
-      fill(colores[n][0], colores[n][1], colores[n][2], 255);
-      circle((100*i), y +(2*Float.parseFloat(historicoPrueba[n][i])), 10);
-      if ((i+1) < 13) {
-        strokeWeight(2);
-        fill(0);
-        line((100*i), y +(2*Float.parseFloat(historicoPrueba[n][i])), 100*(i+1), y +(2*Float.parseFloat(historicoPrueba[n][i + 1])));
+  switch(menu) {
+  case 1:
+    for (int n=0; n<10; n++) {
+      textSize(10);
+      text(historicoPrueba[n][0],10,y +(2*Float.parseFloat(historicoPrueba[n][1])));
+      for (int i = 1; i < historicoPrueba[n].length; i++) {
+        strokeWeight(0);
+        fill(colores[n][0], colores[n][1], colores[n][2], 255);
+        circle((100*i), y +(2*Float.parseFloat(historicoPrueba[n][i])), 10);
+        if ((i+1) < 13) {
+          strokeWeight(2);
+          fill(0);
+          line((100*i), y +(2*Float.parseFloat(historicoPrueba[n][i])), 100*(i+1), y +(2*Float.parseFloat(historicoPrueba[n][i + 1])));
+        }
       }
+      y += 50;
     }
-    y += 50;
+    break;
+  case 2:
+     y = 100;
+    for (int n=0; n<10; n++) {
+      textSize(10);
+      text(historicoPrueba[n][0],10,y +(2*Float.parseFloat(pedidosPrueba[n][1])));
+      for (int i = 1; i < pedidosPrueba[n].length; i++) {
+        strokeWeight(0);
+        fill(colores[n][0], colores[n][1], colores[n][2], 255);
+        circle((100*i), y +(2*Float.parseFloat(pedidosPrueba[n][i])), 10);
+        if ((i+1) < 13) {
+          strokeWeight(2);
+          fill(0);
+          line((100*i), y +(2*Float.parseFloat(pedidosPrueba[n][i])), 100*(i+1), y +(2*Float.parseFloat(pedidosPrueba[n][i + 1])));
+        }
+      }
+      y += 50;
+    }
+    break;
+  case 3:
+    break;
   }
 }
 
@@ -94,19 +104,38 @@ void datos() {
     historicoPrueba[i][12] = tab.getString("Diciembre");
     i++;
   }
-  for () {
-  
+  i = 0;
+  ///////////////////////////////////////////////HISTORICO//////////////////////////////////////////////////////////////
+  for (TableRow tab2 : demanda.rows()) {
+    pedidosPrueba[i][0] = tab2.getString("ID");
+    pedidosPrueba[i][1] = tab2.getString("Enero");
+    pedidosPrueba[i][2] = tab2.getString("Febrero");
+    pedidosPrueba[i][3] = tab2.getString("Marzo");
+    pedidosPrueba[i][4] = tab2.getString("Abril");
+    pedidosPrueba[i][5] = tab2.getString("Mayo");
+    pedidosPrueba[i][6] = tab2.getString("Junio");
+    pedidosPrueba[i][7] = tab2.getString("Julio");
+    pedidosPrueba[i][8] = tab2.getString("Agosto");
+    pedidosPrueba[i][9] = tab2.getString("Septiembre");
+    pedidosPrueba[i][10] = tab2.getString("Octubre");
+    pedidosPrueba[i][11] = tab2.getString("Noviembre");
+    pedidosPrueba[i][12] = tab2.getString("Diciembre");
+    i++;
   }
 }
 
-void guia()
-{
+void guia(){
+  strokeWeight(0);
   for (int i = 0; i < width; i++) {
     line(i * 50, 0, i * 50, height);
   }
   for (int i = 0; i < height; i++) {
     line(0, i * 50, width, i*50);
   }
+  rect(1000, 0, width, 100);
+  textSize(40);
+  fill(0);
+  text("MENU",1100,50);
 }
 
 
@@ -115,6 +144,12 @@ void menu() {
     "1. Graficar demanda presupuestada 2019\n"+
     "2. Graficar historico ventas 2019\n"+
     "3. Graficar demanda 2020\n" + 
-    "4. Generar tabla" + 
+    "4. Generar tabla\n" + 
     "0. Salir"));
+}
+
+void keyPressed() {
+  if (mouseX >= 1000 && mouseX <= width && mouseY >= 0 && mouseY < 100) {
+    setup();
+  }
 }
