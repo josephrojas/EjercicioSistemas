@@ -11,6 +11,7 @@ void setup ()
   menu();
   table = loadTable("historico.csv", "header");
   demanda = loadTable("Ventas.csv", "header");
+  final2020 = new Table();
   historicoPrueba = new String[table.getRowCount()][table.getColumnCount()];
   pedidosPrueba = new String[demanda.getRowCount()][demanda.getColumnCount()];
   prueba2020 = new String[table.getRowCount()][demanda.getColumnCount()];
@@ -160,7 +161,7 @@ void datos() {
   for (int x = 0; x < prueba2020.length;x++) {
     prueba2020[x][0] = pedidosPrueba[x][0];
     for (int y = 1; y < prueba2020[x].length;y++) {
-        prueba2020[x][y] = ""+Float.parseFloat(pedidosPrueba[x][y] + historicoPrueba[x][y]);
+        prueba2020[x][y] = ""+(Float.parseFloat(pedidosPrueba[x][y]) + Float.parseFloat(historicoPrueba[x][y]));
     }
   }
 }
