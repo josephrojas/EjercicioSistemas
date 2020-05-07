@@ -14,6 +14,7 @@ void setup ()
   historicoPrueba = new String[table.getRowCount()][table.getColumnCount()];
   pedidosPrueba = new String[demanda.getRowCount()][demanda.getColumnCount()];
   prueba2020 = new String[table.getRowCount()][demanda.getColumnCount()];
+  datos();
   menu();
   for (int x = 0; x < colores.length; x++) {
     colores[x][0] = (int)(random(150, 255));
@@ -21,7 +22,6 @@ void setup ()
     colores[x][2] = (int)(random(100, 200));
   }
   fullScreen();
-  datos();
 }
 
 void draw()
@@ -191,7 +191,9 @@ void menu() {
     "0. Salir"));
     switch(menu) {
       case 4:
-        
+        guardarTabla();
+        JOptionPane.showMessageDialog(null,"Su tabla se ha guardado en la carpeta data :)");
+        exit();
       break;
       case 0:
         exit();
