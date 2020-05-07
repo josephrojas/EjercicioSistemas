@@ -149,6 +149,7 @@ void guia(){
   for (int i = 0; i < height; i++) {
     line(0, i * 50, width, i*50);
   }
+  fill(255,0,0);
   rect(1000, 0, width, 100);
   textSize(40);
   fill(0);
@@ -163,6 +164,14 @@ void menu() {
     "3. Graficar demanda 2020\n" + 
     "4. Generar tabla\n" + 
     "0. Salir"));
+    switch(menu) {
+      case 4:
+        
+      break;
+      case 0:
+        exit();
+      break;
+    }
 }
 
 void keyPressed() {
