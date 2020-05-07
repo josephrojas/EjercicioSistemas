@@ -40,6 +40,7 @@ void grafica() {
   line(100, (height - 100) + 20, 1200 + 100, (height - 100) + 20);
   line(1180 + 100, (height - 95) + 20, 1200 + 100, (height - 100) + 20);
   line(1180 + 100, (height - 105) + 20, 1200 + 100, (height - 100) + 20);
+  fill(0);
   text("Enero",100,(height - 100) + 40);
   text("Febrero",200,(height - 100) + 40);
   text("Marzo",300,(height - 100) + 40);
@@ -60,6 +61,7 @@ void puntos() {
   switch(menu) {
   case 1:
     for (int n=0; n<10; n++) {
+      fill(0);
       textSize(10);
       text(historicoPrueba[n][0],10,y +(2*Float.parseFloat(historicoPrueba[n][1])));
       for (int i = 1; i < historicoPrueba[n].length; i++) {
@@ -78,6 +80,7 @@ void puntos() {
   case 2:
      y = 100;
     for (int n=0; n<10; n++) {
+      fill(0);
       textSize(10);
       text(historicoPrueba[n][0],10,y +(2*Float.parseFloat(pedidosPrueba[n][1])));
       for (int i = 1; i < pedidosPrueba[n].length; i++) {
