@@ -40,10 +40,23 @@ void grafica() {
   line(100, (height - 100) + 20, 1200 + 100, (height - 100) + 20);
   line(1180 + 100, (height - 95) + 20, 1200 + 100, (height - 100) + 20);
   line(1180 + 100, (height - 105) + 20, 1200 + 100, (height - 100) + 20);
+  text("Enero",100,(height - 100) + 40);
+  text("Febrero",200,(height - 100) + 40);
+  text("Marzo",300,(height - 100) + 40);
+  text("Abril",400,(height - 100) + 40);
+  text("Mayo",500,(height - 100) + 40);
+  text("Junio",600,(height - 100) + 40);
+  text("Julio",700,(height - 100) + 40);
+  text("Agosto",800,(height - 100) + 40);
+  text("Septiembre",900,(height - 100) + 40);
+  text("Octubre",1000,(height - 100) + 40);
+  text("Noviembre",1100,(height - 100) + 40);
+  text("Diciembre",1200,(height - 100) + 40);
 }
 
 void puntos() {
   int y = 200;
+
   switch(menu) {
   case 1:
     for (int n=0; n<10; n++) {
@@ -83,6 +96,7 @@ void puntos() {
   case 3:
     break;
   }
+
 }
 
 void datos() {
