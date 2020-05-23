@@ -2,6 +2,7 @@ class DBConection {
   public static final String URL = "jdbc:mysql://localhost:3306/german?useSSL=false";
   public static final String USER = "root";
   public DBConection () {
+    con();
   }
 
 
