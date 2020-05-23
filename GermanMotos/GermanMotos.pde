@@ -1,3 +1,5 @@
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 int r, g, b;
 int menu;
