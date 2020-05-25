@@ -1,7 +1,9 @@
 class Menu {
-  int x = width/2;
-  int y = height/2;
+  int x;
+  int y;
   public Menu () {
+    x = width/2;
+    y = height/2;
   }
 
   public void drawing () {
